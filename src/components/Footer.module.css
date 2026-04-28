@@ -1,0 +1,8 @@
+/* src/components/Footer.module.css */
+
+.footer {
+  margin-top: auto;
+  padding: 20px;
+  background-color: #242424;
+  color: white;
+}
