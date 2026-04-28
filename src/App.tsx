@@ -4,12 +4,15 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import MainContent from './components/MainContent';
+import Searchbar from './components/Searchbar';
 
 function App() {
   return (
     <>
       <Header />
-      <MainContent />
+      <MainContent>
+        <Searchbar />
+      </MainContent>
       <Footer />
     </>
   );
