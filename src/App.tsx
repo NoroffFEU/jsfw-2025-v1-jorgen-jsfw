@@ -1,19 +1,18 @@
 // src/App.tsx
 
-// import React from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import MainContent from './components/MainContent';
-import Searchbar from './components/Searchbar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   return (
     <>
-      <Header />
-      <MainContent>
-        <Searchbar />
-      </MainContent>
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product" element={<ProductDetails />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
