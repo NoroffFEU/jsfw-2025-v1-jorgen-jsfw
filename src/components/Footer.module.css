@@ -5,4 +5,12 @@
   padding: 20px;
   background-color: #242424;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contactFooter {
+  margin: 0px;
+  color: white;
 }
