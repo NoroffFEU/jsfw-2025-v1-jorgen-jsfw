@@ -1,0 +1,18 @@
+/* src/components/Rating.module.css */
+/* shared with ProductCard.tsx and ProductDetails.tsx */
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.starIcon {
+  color: #ffc107;
+  font-size: 1.1rem;
+}
+
+.ratingText {
+  font-size: 0.9rem;
+}
