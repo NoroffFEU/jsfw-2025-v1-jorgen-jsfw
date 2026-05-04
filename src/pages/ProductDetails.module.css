@@ -1,0 +1,74 @@
+/* src/pages/ProductDetails.module.css */
+
+.container {
+  display: grid;
+  gap: 2rem;
+}
+
+.img {
+  width: 100%;
+  max-width: 500px;
+  object-fit: cover;
+}
+
+.badge {
+  background: red;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.priceBox {
+  margin: 1rem 0;
+}
+
+.description {
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+
+.tags {
+  margin-top: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #eee;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+
+.button {
+  margin-top: 1.5rem;
+  padding: 10px 16px;
+  border: 2px solid;
+  max-width: 150px;
+  border-radius: 20px;
+  background: black;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.button:hover {
+  border-color: aquamarine;
+  color: aquamarine;
+}
+
+.reviews {
+  margin-top: 2rem;
+}
+
+.review {
+  border-top: 1px solid #ddd;
+  padding: 1rem 0;
+}
