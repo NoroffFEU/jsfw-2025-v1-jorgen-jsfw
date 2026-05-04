@@ -1,15 +1,107 @@
 // src/pages/ProductDetails.tsx
 
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import type { Product } from '../types/product';
 import Layout from '../components/Layout';
+import styles from './ProductDetails.module.css';
 
 export default function ProductDetails() {
+  const { id } = useParams(); // get URL id
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`https://v2.api.noroff.dev/online-shop/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data.data);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) return <Layout>Loading...</Layout>;
+  if (!product) return <Layout>Product not found</Layout>;
+
+  const hasDiscount =
+    product.discountedPrice && product.discountedPrice < product.price;
+
+  const discountPercent = hasDiscount
+    ? Math.round(
+        ((product.price - product.discountedPrice!) / product.price) * 100,
+      )
+    : 0;
+
   return (
     <Layout>
       <Link to="/" style={{ display: 'block', marginBottom: '1rem' }}>
         &larr; Back to Home
       </Link>
       <h1>Product Details</h1>
+
+      <div className={styles.container}>
+        {/* image */}
+        <img
+          src={product.image?.url || '/placeholder.jpg'}
+          alt={product.image?.alt || product.title}
+          className={styles.img}
+        />
+
+        {/* discount badge */}
+        {hasDiscount && (
+          <span className={styles.badge}>-{discountPercent}%</span>
+        )}
+
+        {/* title */}
+        <h3 className={styles.title}>{product.title}</h3>
+
+        {/* price */}
+        <div className={styles.priceBox}>
+          {hasDiscount ? (
+            <>
+              <span className={styles.oldPrice}>{product.price} kr</span>
+              <strong>{product.discountedPrice} kr</strong>
+            </>
+          ) : (
+            <strong>{product.price} kr</strong>
+          )}
+        </div>
+
+        {/* description */}
+        <p className={styles.description}>{product.description}</p>
+
+        {/* tags */}
+        {Array.isArray(product.tags) && product.tags.length > 0 && (
+          <div className={styles.tags}>
+            {product.tags.map((tag) => (
+              <span key={tag} className={styles.tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* add to cart */}
+        <button className={styles.button}>Add to Cart</button>
+
+        {/* rating */}
+        <p>{product.rating}</p>
+
+        {/* reviews */}
+        {Array.isArray(product.reviews) && product.reviews.length > 0 && (
+          <div className={styles.reviews}>
+            <h2>Reviews</h2>
+            {product.reviews.map((review) => (
+              <div key={review.id} className={styles.review}>
+                <p>
+                  <strong>{review.username}</strong> ({review.rating}/5)
+                </p>
+                <p>{review.description}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </Layout>
   );
 }
