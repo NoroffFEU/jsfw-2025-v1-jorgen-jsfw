@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <h1>Shop fast and easy</h1>
+      <h1 className={styles.header}>Shop fast and easy</h1>
       <Searchbar />
 
       <div className={styles.grid}>
