@@ -1,0 +1,22 @@
+/* src/components/Price.module.css */
+
+.priceWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.priceText {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  margin-right: 6px;
+  color: gray;
+}
+
+.discountedPrice {
+  font-weight: bold;
+}
