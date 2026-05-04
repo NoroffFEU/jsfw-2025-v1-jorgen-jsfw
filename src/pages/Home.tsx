@@ -1,18 +1,52 @@
 // src/pages/Home.tsx
 
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import Searchbar from '../components/Searchbar';
+import type { Product } from '../types/product';
+import { fetchProducts } from '../api/products';
+import styles from './Home.module.css';
+import ProductCard from '../components/ProductCard';
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]); // React Hook combined with TypeScript
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchProducts()
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load products');
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading)
+    return (
+      <Layout>
+        <p>Loading...</p>
+      </Layout>
+    );
+  if (error)
+    return (
+      <Layout>
+        <p>{error}</p>
+      </Layout>
+    );
+
   return (
     <Layout>
       <h1>Shop fast and easy</h1>
       <Searchbar />
 
-      <div style={{ marginTop: '2rem' }}>
-        <h3 style={{ marginBottom: '0px' }}>Temporary Test Link:</h3>
-        <Link to="/product">Go to Product Details Page</Link>
+      <div className={styles.grid}>
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </Layout>
   );
