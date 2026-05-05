@@ -60,14 +60,14 @@ export default function ProductDetails() {
           {/* title */}
           <h3 className={styles.title}>{product.title}</h3>
 
+          {/* description */}
+          <p className={styles.description}>{product.description}</p>
+
           {/* price logic is in src/components/Price.tsx  */}
           <Price
             price={product.price}
             discountedPrice={product.discountedPrice}
           />
-
-          {/* description */}
-          <p className={styles.description}>{product.description}</p>
 
           {/* tags */}
           {Array.isArray(product.tags) && product.tags.length > 0 && (
