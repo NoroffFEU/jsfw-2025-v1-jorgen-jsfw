@@ -18,11 +18,16 @@ export default function ContactPage() {
   // Setup State for errors
   const [errors, setErrors] = useState<ContactFormErrors>({});
 
+  // show 'message has been sent' text
+  const [submitted, setSubmitted] = useState(false);
+
   // Handle input changes
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) {
     const { name, value } = e.target;
+
+    setSubmitted(false); // hide success message when user types again
 
     setFormData((prev) => ({
       ...prev,
@@ -61,8 +66,16 @@ export default function ContactPage() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      console.log('Form submitted:', formData); // just for checking, need to remove this after.
-      // reset form here if we want that
+      setSubmitted(true); // show success message after clicking 'send button'
+      setErrors({}); // clear errors
+
+      // reset form
+      setFormData({
+        fullName: '',
+        subject: '',
+        email: '',
+        message: '',
+      });
     }
   }
 
@@ -71,7 +84,11 @@ export default function ContactPage() {
       <Link to="/" style={{ display: 'block', marginBottom: '1rem' }}>
         &larr; Back to Home
       </Link>
-      <h1>Contact Us</h1>
+      <h1 className={styles.header}>Contact Us</h1>
+
+      {submitted && (
+        <p className={styles.success}>Your message has been sent!</p>
+      )}
 
       <form className={styles.contactForm} onSubmit={handleSubmit}>
         {/* Full name */}
@@ -84,7 +101,9 @@ export default function ContactPage() {
             value={formData.fullName}
             onChange={handleChange}
           />
-          {errors.fullName && <p>{errors.fullName}</p>}
+          {errors.fullName && (
+            <p className={styles.fullname}>&#11205;{errors.fullName}</p>
+          )}
         </div>
 
         {/* subject */}
@@ -97,7 +116,9 @@ export default function ContactPage() {
             value={formData.subject}
             onChange={handleChange}
           />
-          {errors.subject && <p>{errors.subject}</p>}
+          {errors.subject && (
+            <p className={styles.subject}>&#11205;{errors.subject}</p>
+          )}
         </div>
 
         {/* email */}
@@ -110,7 +131,9 @@ export default function ContactPage() {
             value={formData.email}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && (
+            <p className={styles.email}>&#11205;{errors.email}</p>
+          )}
         </div>
 
         {/* message */}
@@ -122,7 +145,9 @@ export default function ContactPage() {
             value={formData.message}
             onChange={handleChange}
           />
-          {errors.message && <p>{errors.message}</p>}
+          {errors.message && (
+            <p className={styles.message}>&#11205;{errors.message}</p>
+          )}
         </div>
 
         <button className={styles.contactFormButton} type="submit">
