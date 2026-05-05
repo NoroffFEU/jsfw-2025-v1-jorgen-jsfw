@@ -2,7 +2,11 @@
 
 import styles from './Searchbar.module.css';
 
-export default function Searchbar() {
+type Props = {
+  onSearch: (value: string) => void;
+};
+
+export default function Searchbar({ onSearch }: Props) {
   return (
     <div className={styles.container}>
       <span className={styles.icon}>{'\u2315'}</span>
@@ -10,6 +14,7 @@ export default function Searchbar() {
         type="text"
         className={styles.searchbar}
         placeholder="Search for items"
+        onChange={(e) => onSearch(e.target.value)}
       />
     </div>
   );

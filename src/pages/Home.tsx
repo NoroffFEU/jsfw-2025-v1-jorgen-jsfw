@@ -12,6 +12,11 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]); // React Hook combined with TypeScript
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [search, setSearch] = useState('');
+
+  const filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(search.toLowerCase()),
+  );
 
   useEffect(() => {
     fetchProducts()
@@ -41,10 +46,10 @@ export default function Home() {
   return (
     <Layout>
       <h1 className={styles.header}>Shop fast and easy</h1>
-      <Searchbar />
+      <Searchbar onSearch={setSearch} />
 
       <div className={styles.grid}>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
