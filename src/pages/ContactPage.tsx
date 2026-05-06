@@ -1,12 +1,16 @@
 // src/pages/ContactPage.tsx
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { ContactFormData, ContactFormErrors } from '../types/contact';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import styles from './ContactPage.module.css';
 
 export default function ContactPage() {
+  useEffect(() => {
+    document.title = 'Contact Us'; // browser tab text
+  }, []);
+
   // Setup State for form fields
   const [formData, setFormData] = useState<ContactFormData>({
     fullName: '',
