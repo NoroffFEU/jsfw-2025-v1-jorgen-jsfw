@@ -93,6 +93,11 @@
   color: aquamarine;
 }
 
+.success {
+  color: green;
+  margin: 10px 0px 0px 10px;
+}
+
 .reviews {
   margin-top: 2rem;
 }

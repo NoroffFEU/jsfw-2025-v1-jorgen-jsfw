@@ -8,13 +8,17 @@ import styles from './ProductDetails.module.css';
 import Rating from '../components/Rating';
 import Price from '../components/Price';
 import { getDiscount } from '../utils/price';
+import { useCart } from '../hooks/useCart';
 
 export default function ProductDetails() {
   const { id } = useParams(); // get URL id
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
+  const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
 
   useEffect(() => {
+    document.title = 'Product Details'; // browser tab text
     fetch(`https://v2.api.noroff.dev/online-shop/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -84,7 +88,24 @@ export default function ProductDetails() {
           <Rating rating={product.rating} />
 
           {/* add to cart */}
-          <button className={styles.button}>Add to Cart</button>
+          <button
+            className={styles.button}
+            onClick={() => {
+              addToCart({
+                id: product.id,
+                title: product.title,
+                price: product.discountedPrice || product.price,
+                quantity: 1,
+                image: product.image?.url || '',
+              });
+
+              setAdded(true); // show feedback
+            }}
+          >
+            Add to Cart
+          </button>
+
+          {added && <p className={styles.success}>Added to cart!</p>}
 
           {/* reviews */}
           {Array.isArray(product.reviews) && product.reviews.length > 0 && (
