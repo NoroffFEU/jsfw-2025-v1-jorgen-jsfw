@@ -19,6 +19,7 @@ export default function Home() {
   );
 
   useEffect(() => {
+    document.title = 'Home'; // browser tab text
     fetchProducts()
       .then((data) => {
         setProducts(data);
