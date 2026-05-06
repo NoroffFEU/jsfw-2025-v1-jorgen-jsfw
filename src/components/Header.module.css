@@ -4,4 +4,55 @@
   padding: 20px;
   background-color: #242424;
   color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cart {
+  margin-right: 100px;
+  font-size: large;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdown {
+  position: absolute;
+  right: 20px;
+  top: 75px;
+  width: 250px;
+  background: white;
+  color: black;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 10;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.title {
+  flex: 1;
+  font-size: 14px;
+}
+
+.qty {
+  font-size: 14px;
+  font-weight: 600;
 }
