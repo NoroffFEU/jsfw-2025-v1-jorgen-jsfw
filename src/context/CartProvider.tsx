@@ -11,6 +11,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  /**
+   * Adds a product to the shopping cart.
+   * If the item already exists, its quantity increases.
+   *
+   * @param product Product added to cart
+   */
   function addToCart(product: CartItem) {
     setCart((prev) => {
       const existing = prev.find((item) => item.id === product.id);
