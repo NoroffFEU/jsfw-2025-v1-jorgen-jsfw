@@ -1,5 +1,13 @@
 // src/utils/price.ts
 
+/**
+ * Calculates whether a product has a discount
+ * and returns the discount percentage.
+ *
+ * @param price Original product price
+ * @param discountedPrice Discounted product price
+ * @returns  Object containing discount status and percentage
+ */
 export function getDiscount(price: number, discountedPrice?: number) {
   const hasDiscount = discountedPrice !== undefined && discountedPrice < price;
 
