@@ -14,3 +14,23 @@
   margin: 0px;
   color: white;
 }
+
+/* Tablet */
+@media (max-width: 768px) {
+  .footer {
+    padding: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .footer {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer h3 {
+    margin: 0;
+  }
+}

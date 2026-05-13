@@ -1,11 +1,15 @@
 // src/context/CartProvider.tsx
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { CartItem } from '../types/cart';
 import { CartContext } from './CartContext';
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const savedCart = localStorage.getItem('cart');
+
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
   function addToCart(product: CartItem) {
     setCart((prev) => {
@@ -37,9 +41,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     );
   }
 
+  function clearCart() {
+    setCart([]);
+  }
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}
     >
       {children}
     </CartContext.Provider>

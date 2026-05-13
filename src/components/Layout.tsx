@@ -6,12 +6,13 @@ import MainContent from './MainContent';
 
 interface Props {
   children: ReactNode;
+  hideCart?: boolean;
 }
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children, hideCart }: Props) {
   return (
     <>
-      <Header />
+      <Header hideCart={hideCart} />
       <MainContent>
         {children} {/* This is where your page-specific content goes */}
       </MainContent>
