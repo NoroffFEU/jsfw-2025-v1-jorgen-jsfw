@@ -1,79 +1,133 @@
-# React + TypeScript + Vite
+# Online Shop
 
-# Live Demo
+E-commerce web application built with React, TypeScript, and Vite.
 
-View the live site here https://dynamic-kelpie-c1884d.netlify.app/
+## Live Demo
+
+View the live site here:
+
+https://jsfw-2025-v1-jorgen-jsfw.vercel.app/
+
+https://dynamic-kelpie-c1884d.netlify.app/
 
 ##
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
 
-Currently, two official plugins are available:
+This project is an online shopping application built as part of a front-end development assignment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Users can:
 
-## React Compiler
+- Browse products
+- Search for products dynamically
+- View detailed product information
+- Add products to cart
+- Adjust quantities in cart
+- Remove products from cart
+- Complete checkout
+- Submit a contact form with validation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The application is fully responsive for desktop, tablet, and mobile devices.
 
-## Expanding the ESLint configuration
+##
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Home Page
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Fetches products from the Noroff Online Shop API
+- Displays:
+  - Product image
+  - Product title
+  - Product price
+  - Discounted price
+  - Discount percentage badge
+  - Product rating
+- Dynamic search filtering
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+##
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Product Details Page
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+- Fetches a single product using product ID
+- Displays:
+  - Product image
+  - Description
+  - Tags
+  - Reviews
+  - Ratings
+  - Discount information
+- Add to cart functionality
+- Toast notification when adding item to cart
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## Shopping Cart
+
+- Cart item counter in header
+- Add/remove products
+- Increase/decrease quantity
+- Total price calculation
+- Cart saved in localStorage
+- Checkout functionality
+- Toast notification when removing items
+
+## Checkout Success Page
+
+- Displays order confirmation message
+- Clears cart after checkout
+
+## Contact Page
+
+Includes form validation for:
+
+- Full name
+- Subject
+- Email
+- Message
+
+Validation errors are displayed clearly to the user.
+
+## Technologies Used
+
+- React
+- TypeScript
+- Vite
+- React Router
+- CSS Modules
+- React Toastify
+
+## Responsive Design
+
+The website is responsive across:
+
+- Desktop
+- Tablet
+- Mobile
+
+Responsive layouts are created using CSS media queries and flexible grid layouts.
+
+## API
+
+Data is fetched from the Noroff Online Shop API:
+
+https://v2.api.noroff.dev/online-shop
+
+## Installation
+
+1. Clone the repository
+   git clone https://github.com/NoroffFEU/jsfw-2025-v1-jorgen-jsfw.git
+
+2. Navigate into the project/ if needed.
+
+   cd jsfw-2025-v1-jorgen-jsfw
+
+3. Install dependencies
+
+   npm install
+
+4. Start development server
+
+   npm run dev
+
+## Author
+
+Jørgen Bjørnethun
