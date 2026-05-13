@@ -8,8 +8,6 @@ View the live site here:
 
 https://jsfw-2025-v1-jorgen-jsfw.vercel.app/
 
-https://dynamic-kelpie-c1884d.netlify.app/
-
 ##
 
 ## Project Description
