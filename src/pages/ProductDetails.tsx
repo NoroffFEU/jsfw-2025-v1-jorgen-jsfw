@@ -1,6 +1,6 @@
 // src/pages/ProductDetails.tsx
 
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import type { Product } from '../types/product';
 import Layout from '../components/Layout';
@@ -9,13 +9,14 @@ import Rating from '../components/Rating';
 import Price from '../components/Price';
 import { getDiscount } from '../utils/price';
 import { useCart } from '../hooks/useCart';
+import BackToHome from '../components/BackToHome';
+import { toast } from 'react-toastify';
 
 export default function ProductDetails() {
   const { id } = useParams(); // get URL id
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
-  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     document.title = 'Product Details'; // browser tab text
@@ -37,9 +38,7 @@ export default function ProductDetails() {
 
   return (
     <Layout>
-      <Link to="/" style={{ display: 'block', marginBottom: '1rem' }}>
-        &larr; Back to Home
-      </Link>
+      <BackToHome />
 
       <h1 className={styles.header}>Product Details</h1>
 
@@ -94,18 +93,18 @@ export default function ProductDetails() {
               addToCart({
                 id: product.id,
                 title: product.title,
-                price: product.discountedPrice || product.price,
                 quantity: 1,
                 image: product.image?.url || '',
+
+                price: product.price,
+                discountedPrice: product.discountedPrice,
               });
 
-              setAdded(true); // show feedback
+              toast.success('Added to cart!'); // show feedback
             }}
           >
             Add to Cart
           </button>
-
-          {added && <p className={styles.success}>Added to cart!</p>}
 
           {/* reviews */}
           {Array.isArray(product.reviews) && product.reviews.length > 0 && (

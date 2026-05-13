@@ -1,5 +1,6 @@
 /* src/pages/ProductDetails.module.css */
 
+/* Desktop */
 .header {
   text-align: center;
 }
@@ -105,4 +106,36 @@
 .review {
   border-top: 1px solid #ddd;
   padding: 1rem 0;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .imageWrapper {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .page {
+    padding: 15px;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 100%;
+  }
 }

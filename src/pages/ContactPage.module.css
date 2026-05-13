@@ -1,5 +1,6 @@
 /* src/pages/ContactPage.module.css */
 
+/* Desktop */
 .header {
   text-align: center;
 }
@@ -54,4 +55,11 @@ textarea {
   background-color: green;
   color: white;
   border: 1px solid black;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .contactForm {
+    padding: 0 10px;
+  }
 }

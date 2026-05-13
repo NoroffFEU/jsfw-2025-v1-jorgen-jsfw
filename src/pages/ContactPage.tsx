@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import type { ContactFormData, ContactFormErrors } from '../types/contact';
-import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import styles from './ContactPage.module.css';
+import BackToHome from '../components/BackToHome';
 
 export default function ContactPage() {
   useEffect(() => {
@@ -85,9 +85,8 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      <Link to="/" style={{ display: 'block', marginBottom: '1rem' }}>
-        &larr; Back to Home
-      </Link>
+      <BackToHome />
+
       <h1 className={styles.header}>Contact Us</h1>
 
       {submitted && (

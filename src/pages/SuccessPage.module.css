@@ -1,0 +1,19 @@
+/* src/pages/SuccessPage.module.css */
+
+/* Desktop */
+.container {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.buttonWrapper {
+  margin-top: 50px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+}
