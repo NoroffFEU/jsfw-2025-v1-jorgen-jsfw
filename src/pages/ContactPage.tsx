@@ -14,8 +14,8 @@ export default function ContactPage() {
   // Setup State for form fields
   const [formData, setFormData] = useState<ContactFormData>({
     fullName: '',
-    subject: '',
     email: '',
+    subject: '',
     message: '',
   });
 
@@ -76,8 +76,8 @@ export default function ContactPage() {
       // reset form
       setFormData({
         fullName: '',
-        subject: '',
         email: '',
+        subject: '',
         message: '',
       });
     }
@@ -109,21 +109,6 @@ export default function ContactPage() {
           )}
         </div>
 
-        {/* subject */}
-        <label>Subject</label>
-        <div>
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
-            onChange={handleChange}
-          />
-          {errors.subject && (
-            <p className={styles.subject}>&#11205;{errors.subject}</p>
-          )}
-        </div>
-
         {/* email */}
         <label>Email</label>
         <div>
@@ -136,6 +121,21 @@ export default function ContactPage() {
           />
           {errors.email && (
             <p className={styles.email}>&#11205;{errors.email}</p>
+          )}
+        </div>
+
+        {/* subject */}
+        <label>Subject</label>
+        <div>
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            value={formData.subject}
+            onChange={handleChange}
+          />
+          {errors.subject && (
+            <p className={styles.subject}>&#11205;{errors.subject}</p>
           )}
         </div>
 
