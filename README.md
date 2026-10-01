@@ -78,8 +78,8 @@ Home Page
 Includes form validation for:
 
 - Full name
-- Subject
 - Email
+- Subject
 - Message
 
 Validation errors are displayed clearly to the user.
